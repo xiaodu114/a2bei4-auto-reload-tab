@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>（通过配置）自动刷新页面</title>
+    <link rel="stylesheet" href="../common/common.css" />
+    <style>
+        html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            font-size: 16px;
+        }
+
+        body {
+            height: 100%;
+            width: 61.8%;
+            margin: 0 auto;
+            background-color: #f4f4f4;
+            font-size: 1rem;
+        }
+
+        .options-page {
+            width: 100%;
+            min-height: 100%;
+            background-color: #fff;
+            box-shadow: 2px 2px 8px rgb(0 0 0 / 10%);
+        }
+
+        header,
+        main {
+            padding: 16px;
+        }
+
+        header {
+            display: flex;
+        }
+
+        header>.header-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        /* 分割线 */
+        .split-line {
+            background-color: #f4f4f4;
+            height: 2px;
+        }
+
+        section[name="addEditConfigSection"],
+        section[name="viewConfigSection"] {
+            display: none;
+        }
+
+        form label {
+            cursor: pointer;
+        }
+
+        form label>input[type="radio"] {
+            vertical-align: middle;
+            margin-top: -2px;
+            cursor: pointer;
+        }
+
+        .more-set-container {
+            text-align: right;
+            color: #3cb878;
+        }
+
+        .more-set-container>label {
+            display: none;
+        }
+
+        fieldset[name="fieldsetHost"],
+        fieldset[name="fieldsetContain"] {
+            display: none;
+        }
+
+        fieldset[name="fieldsetHost"]>legend>button,
+        fieldset[name="fieldsetContain"]>legend>button {
+            font-size: 20px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+
+        .form-item-label-row {
+            display: flex;
+            align-items: center;
+        }
+
+        .form-item-label-row>input {
+            flex: 1;
+            height: 36px;
+            padding: 6px 12px;
+            border: 1px solid #dbdbdb;
+            border-radius: 4px;
+        }
+
+        .form-item-label-row>input:focus {
+            border-color: #3cb878;
+            outline: none;
+        }
+    </style>
+    <script src="../common/common.js"></script>
+    <script src="./options.js"></script>
+</head>
+
+<body>
+    <div class="options-page">
+        <header>
+            <div class="header-left">
+                <img src="../images/logo.png" />
+                <h1>（通过配置）自动刷新页面</h1>
+            </div>
+            <div class="header-right"></div>
+        </header>
+        <div class="split-line"></div>
+        <main>
+            <section name="addEditConfigSection">
+                <form name="formBaseInfo">
+                    <p>
+                        <label class="form-item-label-row">唯一名称：<input type="text" name="idName" /> </label>
+                    </p>
+                    <p>
+                        <label>监听方式：</label>
+                        <label><input type="radio" name="monitorType" value="sse" />Server-sent Events</label>
+                        <label><input type="radio" name="monitorType" value="ws" />WebSocket</label>
+                    </p>
+                    <p>
+                        <label class="form-item-label-row">监听地址：<input type="text" name="monitorUrl" /> </label>
+                    </p>
+                    <p class="more-set-container">
+                        <label class="open-more-set" id="moreSetOpen">更多&or;</label>
+                        <label class="close-more-set" id="moreSetClose">收起&and;</label>
+                    </p>
+                </form>
+                <div class="divMoreOption">
+                    <form name="formMatchType">
+                        <p>
+                            <label>匹配方式：</label>
+                            <label><input type="radio" name="matchType" value="Host" />主机名和端口</label>
+                            <label><input type="radio" name="matchType" value="Contain" />包含</label>
+                        </p>
+                    </form>
+                    <fieldset name="fieldsetHost">
+                        <legend>
+                            刷新地址
+                            <button type="button" name="fieldsetHostAdd">&#43;</button>
+                            <button type="button" name="fieldsetHostDelete">&#8722;</button>
+                        </legend>
+                        <form name="formHost">
+                            <p>
+                                <label class="form-item-label-row">主机名：<input type="text" name="urlHostName" /> </label>
+                            </p>
+                            <p>
+                                <label class="form-item-label-row">端&nbsp;&nbsp;&nbsp;&nbsp;口：<input type="text"
+                                        name="urlPort" /> </label>
+                            </p>
+                        </form>
+                    </fieldset>
+                    <fieldset name="fieldsetContain">
+                        <legend>
+                            刷新地址
+                            <button type="button" name="fieldsetContainAdd">&#43;</button>
+                            <button type="button" name="fieldsetContainDelete">&#8722;</button>
+                        </legend>
+                        <form name="formContain">
+                            <p>
+                                <label class="form-item-label-row">关键词：<input type="text" name="urlContainKey" />
+                                </label>
+                            </p>
+                        </form>
+                    </fieldset>
+                </div>
+                <p>
+                    <button type="button" id="btnSave">保存</button>
+                </p>
+            </section>
+            <section name="viewConfigSection">
+                <div class="viewBox"></div>
+                <p>
+                    <button type="button" id="btnEdit">编辑</button>
+                    <button type="button" id="btnDelete">删除</button>
+                </p>
+            </section>
+        </main>
+        <div class="split-line"></div>
+        <footer></footer>
+    </div>
+</body>
+
+</html>

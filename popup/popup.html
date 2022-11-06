@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>（通过配置）自动刷新页面</title>
+    <link rel="stylesheet" href="../common/common.css" />
+    <style>
+        html,
+        body {
+            width: 345px;
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        header,
+        main {
+            padding: 16px;
+        }
+
+        header {
+            display: flex;
+        }
+
+        header>.header-left {
+            flex: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        header>.header-left>img {
+            height: 32px;
+        }
+
+        header>.header-left>span {
+            margin-left: 10px;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        header>.header-right {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0.5;
+        }
+
+        header>.header-right:hover {
+            opacity: 1;
+        }
+
+        section[name="sectionConfig"],
+        section[name="sectionMsg"] {
+            display: none;
+        }
+
+        .config-item-for-toggle-monitor {
+            display: flex;
+            padding: 10px 0;
+        }
+
+        .config-item-for-toggle-monitor>.left-text {
+            flex: 1;
+        }
+
+        .config-item-for-toggle-monitor>.left-operate {
+            flex-shrink: 0;
+        }
+    </style>
+    <script src="../common/common.js"></script>
+    <script src="./popup.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="header-left">
+            <img src="../images/logo.png" />
+            <span>（通过配置）自动刷新页面</span>
+        </div>
+        <div class="header-right" id="divOpenOptions">
+            <img src="../images/settings.svg" />
+        </div>
+    </header>
+    <div class="split-line"></div>
+    <main>
+        <section name="sectionConfig">
+            <p>
+                <strong>您已经配置，开始监听吧！</strong>
+            </p>
+            <div class="viewBox"></div>
+        </section>
+        <section name="sectionMsg">
+            <p>
+                <strong>没有查到您的配置，还在等什么，赶紧试试吧！</strong>
+            </p>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

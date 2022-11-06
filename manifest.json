@@ -1,0 +1,21 @@
+{
+    "manifest_version": 2,
+    "name": "（通过配置）自动刷新页面",
+    "version": "0.0.1",
+    "description": "这款插件作为SSE或者WebSocket的客户端，在接收到SSE或者WebSocket消息推送时，根据您的配置刷新指定页面……",
+    "icons": {
+        "128": "images/logo.png"
+    },
+    "browser_action": {
+        "default_popup": "/popup/popup.html"
+    },
+    "options_ui": {
+        "open_in_tab": true,
+        "page": "/options/options.html"
+    },
+    "background": {
+        "scripts": ["/common/common.js", "background.js"],
+        "persistent": true
+    },
+    "permissions": ["activeTab", "background", "tabs", "storage"]
+}

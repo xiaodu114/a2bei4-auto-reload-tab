@@ -1,0 +1,29 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+fieldset {
+    margin-bottom: 15px;
+    border: 2px solid #dbdbdb;
+    border-radius: 4px;
+}
+
+/* 分割线 */
+.split-line {
+    background-color: #f4f4f4;
+    height: 2px;
+}
+
+.form-item-readonly-mode {}
+
+.form-item-readonly-mode>.form-item-label {
+    width: 90px;
+    display: inline-block;
+    text-align: left;
+}
+
+.form-item-readonly-mode>.form-item-value {
+    color: #a9a9a9;
+}

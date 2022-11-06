@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        if (!!window.EventSource) {
+            var source = new EventSource('http://127.0.0.1:8899/reload-page-by-sse/');
+            source.addEventListener("open", (event) => {
+                debugger;
+                console.log("EventSource open 事件");
+            }, false);
+
+            source.addEventListener("message", (event) => {
+                debugger;
+                console.log("EventSource message 事件");
+            }, false);
+
+            source.addEventListener("error", (event) => {
+                console.error("event source error", event);
+                source.close();
+            });
+        }
+    </script>
+</body>
+
+</html>
